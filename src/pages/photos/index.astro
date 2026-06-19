@@ -1,0 +1,24 @@
+---
+import PageHero from "../../components/PageHero.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { photoAlbums } from "../../data/site";
+---
+
+<BaseLayout title="Photos">
+  <PageHero
+    eyebrow="Photos"
+    title="A photography-forward view of troop life."
+    text="Browse troop meetings, campouts, ceremonies, service projects, and other moments from the Troop 10 year."
+  />
+  <section class="section">
+    <div class="container grid three">
+      {photoAlbums.map((album) => (
+        <article class="card">
+          <p class="card-kicker">{album.date}</p>
+          <h3>{album.title}</h3>
+          <p>{album.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+import PageHero from "../../components/PageHero.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { meritBadges } from "../../data/site";
+---
+
+<BaseLayout title="Merit Badges">
+  <PageHero
+    eyebrow="Merit Badge Resources"
+    title="Resources for skill-building and advancement."
+    text="Merit badges help scouts explore interests, learn practical skills, and progress through the program."
+  />
+  <section class="section">
+    <div class="container grid three">
+      {meritBadges.map((badge) => (
+        <article class="card">
+          <p class="card-kicker">Resource</p>
+          <h3>{badge}</h3>
+          <p class="muted">Requirements, worksheets, and related links for troop families.</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

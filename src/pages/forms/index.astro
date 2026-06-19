@@ -1,0 +1,30 @@
+---
+import PageHero from "../../components/PageHero.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { documentGroups } from "../../data/site";
+---
+
+<BaseLayout title="Forms">
+  <PageHero
+    eyebrow="Forms & Documents"
+    title="The resource library families can actually scan."
+    text="Documents are grouped by practical task: admin forms, summer camp, and uniform or equipment information."
+  />
+  <section class="section">
+    <div class="container">
+      {documentGroups.map((group) => (
+        <section class="resource-group">
+          <h2>{group.title}</h2>
+          <div class="grid two">
+            {group.items.map((item) => (
+              <article class="card">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,23 @@
+---
+import PageHero from "../../components/PageHero.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { leaders } from "../../data/site";
+---
+
+<BaseLayout title="Leaders">
+  <PageHero
+    eyebrow="Adult Leaders"
+    title="The volunteers supporting Troop 10."
+    text="Troop 10 is supported by adult volunteers who help scouts lead, plan, camp, advance, and serve."
+  />
+  <section class="section">
+    <div class="container grid three">
+      {leaders.map((leader) => (
+        <article class="card">
+          <p class="card-kicker">{leader.role}</p>
+          <h3>{leader.name}</h3>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

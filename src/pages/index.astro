@@ -1,0 +1,135 @@
+---
+import EventCard from "../components/EventCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { documentGroups, memberLoginUrl, photoAlbums, upcomingEvents } from "../data/site";
+
+const featuredDocuments = documentGroups.flatMap((group) => group.items.slice(0, 2)).slice(0, 4);
+const featuredAlbums = photoAlbums.slice(0, 3);
+---
+
+<BaseLayout
+  title="Home"
+  description="Scouts of America Troop 10 Medfield helps youth build leadership, outdoor skills, service, and confidence."
+>
+  <section class="hero">
+    <div class="container hero-content">
+      <p class="eyebrow">Scouts of America Troop 10 · Medfield, MA</p>
+      <h1>Adventure, leadership, and service in motion.</h1>
+      <p>
+        Troop 10 is a scout-led community for youth who want to camp, explore, serve, learn outdoor
+        skills, and grow into confident leaders.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="/join/">Join or Ask a Question</a>
+        <a class="button secondary" href="/calendar/">See Upcoming Events</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-header">
+      <div>
+        <p class="eyebrow">Welcome</p>
+        <h2>A troop built around the outdoors.</h2>
+      </div>
+      <p>
+        Troop 10 meets through the school year, camps across New England, attends summer camp at
+        Camp Yawgoog, serves the community, and recognizes scouts as they advance.
+      </p>
+    </div>
+    <div class="container grid three">
+      <article class="card">
+        <p class="card-kicker">New Families</p>
+        <h3>Visit a meeting</h3>
+        <p>Learn how Troop 10 works, what scouts do, and how your family can get started.</p>
+      </article>
+      <article class="card">
+        <p class="card-kicker">Current Families</p>
+        <h3>Stay organized</h3>
+        <p>Find upcoming events, camp resources, forms, merit badge links, and member access.</p>
+      </article>
+      <article class="card">
+        <p class="card-kicker">Scouts</p>
+        <h3>Lead and grow</h3>
+        <p>Build skills, plan activities, serve others, and work toward ranks and merit badges.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container section-header">
+      <div>
+        <p class="eyebrow">Upcoming</p>
+        <h2>Events families can scan.</h2>
+      </div>
+      <p>
+        Meetings, courts of honor, campouts, service projects, and summer camp keep the troop year
+        moving.
+      </p>
+    </div>
+    <div class="container grid three">
+      {upcomingEvents.map((event) => <EventCard event={event} />)}
+    </div>
+  </section>
+
+  <section class="section feature-band">
+    <div class="container grid two">
+      <div>
+        <p class="eyebrow">For Troop Families</p>
+        <h2>Member access for sign-ups, accounts, and troop records.</h2>
+        <p>
+          Current families can use the member login for event sign-ups, account information,
+          directories, advancement records, and troop communications.
+        </p>
+        <a class="button primary" href={memberLoginUrl}>Open Member Login</a>
+      </div>
+      <div class="card">
+        <p class="card-kicker">Member Tools</p>
+        <ul class="quick-list">
+          <li><span>Events</span><strong>RSVPs and trip details</strong></li>
+          <li><span>Accounts</span><strong>Balances and payments</strong></li>
+          <li><span>Records</span><strong>Advancement and rosters</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container section-header">
+      <div>
+        <p class="eyebrow">Resources</p>
+        <h2>Forms, camp guides, and practical documents.</h2>
+      </div>
+      <p>Documents are grouped by topic so families do not have to hunt through a deep menu.</p>
+    </div>
+    <div class="container grid two">
+      {featuredDocuments.map((doc) => (
+        <article class="card">
+          <h3>{doc.title}</h3>
+          <p>{doc.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container section-header">
+      <div>
+        <p class="eyebrow">Photos</p>
+        <h2>Show the troop in action.</h2>
+      </div>
+      <p>
+        Browse recent outings, meetings, ceremonies, and activities that show the troop in action.
+      </p>
+    </div>
+    <div class="container grid three">
+      {featuredAlbums.map((album) => (
+        <article class="card">
+          <p class="card-kicker">{album.date}</p>
+          <h3>{album.title}</h3>
+          <p>{album.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import PageHero from "../../components/PageHero.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Join">
+  <PageHero
+    eyebrow="Join Troop 10"
+    title="Interested in Scouting with Troop 10?"
+    text="Troop 10 welcomes youth and families interested in outdoor adventure, leadership, service, and a scout-led program."
+  />
+  <section class="section">
+    <div class="container grid two">
+      <div>
+        <p class="eyebrow">What to Expect</p>
+        <h2>Start with a question, visit, or conversation.</h2>
+        <p>
+          Families can use this form to ask about joining, meeting visits, upcoming events, or what
+          scouting looks like in Troop 10. A troop volunteer will follow up with next steps.
+        </p>
+      </div>
+      <form class="card form-panel" name="join-inquiry">
+        <label>
+          Your name
+          <input name="name" autocomplete="name" />
+        </label>
+        <label>
+          Reason for contacting us
+          <select name="reason">
+            <option>My scout is interested in joining the troop</option>
+            <option>I have a question about an event</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>
+          Email address
+          <input name="email" type="email" autocomplete="email" />
+        </label>
+        <label>
+          Telephone number optional
+          <input name="phone" type="tel" autocomplete="tel" />
+        </label>
+        <label>
+          Comment
+          <textarea name="message"></textarea>
+        </label>
+        <button class="button primary" type="button">Submit Inquiry</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

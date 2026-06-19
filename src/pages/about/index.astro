@@ -1,0 +1,23 @@
+---
+import PageHero from "../../components/PageHero.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { aboutSections } from "../../data/site";
+---
+
+<BaseLayout title="About">
+  <PageHero
+    eyebrow="About Our Troop"
+    title="A scout-led troop with a full outdoor year."
+    text="Troop 10 gives scouts room to lead, learn practical skills, serve the community, and spend meaningful time outside."
+  />
+  <section class="section">
+    <div class="container grid two">
+      {aboutSections.map((section) => (
+        <article class="card">
+          <h2>{section.title}</h2>
+          <p>{section.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

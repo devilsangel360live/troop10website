@@ -1,0 +1,22 @@
+---
+interface Props {
+  event: {
+    title: string;
+    date: string;
+    time: string;
+    type: string;
+    location: string;
+    description: string;
+  };
+}
+
+const { event } = Astro.props;
+---
+
+<article class="card event-card">
+  <div class="card-kicker">{event.type}</div>
+  <h3>{event.title}</h3>
+  <p class="event-meta">{event.date} · {event.time}</p>
+  <p class="event-location">{event.location}</p>
+  <p>{event.description}</p>
+</article>

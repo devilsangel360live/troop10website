@@ -1,0 +1,67 @@
+---
+import "../styles/global.css";
+import { memberLoginUrl, navItems } from "../data/site";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Troop 10 Medfield is a Scouts of America troop serving families around Medfield, Massachusetts.",
+} = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Troop 10 Medfield</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/" aria-label="Troop 10 Medfield home">
+          <span class="brand-mark">10</span>
+          <span>
+            <strong>Troop 10</strong>
+            <small>Medfield, MA</small>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          {navItems.map((item) => (
+            <a href={item.href} class:list={[currentPath === item.href && "is-active"]}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <a class="login-link" href={memberLoginUrl}>Member Login</a>
+      </div>
+    </header>
+    <main id="content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>Troop 10 Medfield</strong>
+          <p>Meetings generally run Tuesdays, 7:00-8:30 PM, at United Church of Christ in Medfield.</p>
+        </div>
+        <div>
+          <strong>Scouts of America</strong>
+          <p>Troop 10 welcomes youth ready for outdoor adventure, leadership, service, and growth.</p>
+        </div>
+        <div>
+          <strong>Medfield, Massachusetts</strong>
+          <p>Serving families in and around Medfield with a year-round, scout-led program.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

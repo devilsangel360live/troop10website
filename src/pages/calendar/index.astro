@@ -1,0 +1,29 @@
+---
+import EventCard from "../../components/EventCard.astro";
+import PageHero from "../../components/PageHero.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { upcomingEvents } from "../../data/site";
+---
+
+<BaseLayout title="Calendar">
+  <PageHero
+    eyebrow="Calendar"
+    title="Troop meetings, campouts, service, and ceremonies."
+    text="Families can use the calendar to see what is coming up and plan around the troop year."
+  />
+  <section class="section">
+    <div class="container section-header">
+      <div>
+        <p class="eyebrow">Upcoming Events</p>
+        <h2>Upcoming troop events.</h2>
+      </div>
+      <p>
+        Check back for meeting nights, camping trips, courts of honor, service projects, and summer
+        camp information.
+      </p>
+    </div>
+    <div class="container grid three">
+      {upcomingEvents.map((event) => <EventCard event={event} />)}
+    </div>
+  </section>
+</BaseLayout>
